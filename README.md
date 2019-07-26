@@ -10,22 +10,22 @@ This project allows you to:
 -   Configure the actions that an actuator can perform (check details on  [Message Format for Actions Registration](https://github.com/eubr-atmosphere/tma-framework-k/tree/master#message-format-for-actions-registration)).
 
 
-## Index
+# Index
 
- -   [Installation](#api-Installation)
- -   [Execution](#api-Execution)
- -   [Actions](#api-Actions)
-     -   [Configure the Actions that an Actuator can perform](#api-Actions-Configure_the_Actions_that_an_Actuator_can_perform)
- -   [Add to the Database](#api-Add_to_the_Database)
-     -   [Add a new Actuator to the Database](#api-Add_to_the_Database-Add_a_new_Actuator_to_the_Database)
-     -   [Add a new Description to the Database](#api-Add_to_the_Database-Add_a_new_Description_to_the_Database)
-     -   [Add a new Probe to the Database](#api-Add_to_the_Database-Add_a_new_Probe_to_the_Database)
-     -   [Add a new Resource to the Database](#api-Add_to_the_Database-Add_a_new_Resource_to_the_Database)
- -   [Keys](#api-Keys)
-     -   [Generate a new Public - Private key pair](#api-Keys-Generate_Key_Pair)
+ -   [Installation](#Installation)
+ -   [Execution](#Execution)
+ -   [Actions](#Actions)
+     -   [Configure the Actions that an Actuator can perform](#Actions-Configure_the_Actions_that_an_Actuator_can_perform)
+ -   [Add to the Database](#Add_to_the_Database)
+     -   [Add a new Actuator to the Database](#Add_to_the_Database-Add_a_new_Actuator_to_the_Database)
+     -   [Add a new Description to the Database](#Add_to_the_Database-Add_a_new_Description_to_the_Database)
+     -   [Add a new Probe to the Database](#Add_to_the_Database-Add_a_new_Probe_to_the_Database)
+     -   [Add a new Resource to the Database](#Add_to_the_Database-Add_a_new_Resource_to_the_Database)
+ -   [Keys](#Keys)
+     -   [Generate a new Public - Private key pair](#Keys-Generate_Key_Pair)
 
 
-## Installation
+# Installation
 
 To build the container, you should run the following command on the worker node:
 
@@ -44,7 +44,7 @@ Keep in mind that you need **curl** installed  on your machine to be able to use
 sudo apt install curl
 ```
 
-## Execution
+# Execution
 
 There is an example on how to execute each of the features refered in the beggining in the corresponding section bellow.
 
