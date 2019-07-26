@@ -15,7 +15,7 @@ This project allows you to:
  -   [Installation](#Installation)
  -   [Execution](#Execution)
  -   [Actions](#Actions)
-     -   [Configure the Actions that an Actuator can perform](#Actions-Configure_the_Actions_that_an_Actuator_can_perform)
+     -   [Configure the Actions that an Actuator can perform](#Actions---Configure-the-Actions-that-an-Actuator-can-perform)
  -   [Add to the Database](#Add_to_the_Database)
      -   [Add a new Actuator to the Database](#Add_to_the_Database-Add_a_new_Actuator_to_the_Database)
      -   [Add a new Description to the Database](#Add_to_the_Database-Add_a_new_Description_to_the_Database)
