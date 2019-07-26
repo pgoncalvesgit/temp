@@ -15,14 +15,14 @@ This project allows you to:
  -   [Installation](#Installation)
  -   [Execution](#Execution)
  -   [Actions](#Actions)
-     -   [Configure the Actions that an Actuator can perform](#Actions---Configure-the-Actions-that-an-Actuator-can-perform)
- -   [Add to the Database](#Add_to_the_Database)
-     -   [Add a new Actuator to the Database](#Add_to_the_Database-Add_a_new_Actuator_to_the_Database)
-     -   [Add a new Description to the Database](#Add_to_the_Database-Add_a_new_Description_to_the_Database)
-     -   [Add a new Probe to the Database](#Add_to_the_Database-Add_a_new_Probe_to_the_Database)
-     -   [Add a new Resource to the Database](#Add_to_the_Database-Add_a_new_Resource_to_the_Database)
+     -   [Configure the Actions that an Actuator can perform](#Configure-the-Actions-that-an-Actuator-can-perform)
+ -   [Add to the Database](#Add-to-the-Database)
+     -   [Add a new Actuator to the Database](#Add-a-new-Actuator-to-the-Database)
+     -   [Add a new Description to the Database](#Add-a-new-Description-to-the-Database)
+     -   [Add a new Probe to the Database](#Add-a-new-Probe-to-the-Database)
+     -   [Add a new Resource to the Database](#Add-a-new-Resource-to-the-Database)
  -   [Keys](#Keys)
-     -   [Generate a new Public - Private key pair](#Keys-Generate_Key_Pair)
+     -   [Generate a new Public - Private key pair](#Generate-a-new-Public---Private-key-pair)
 
 
 # Installation
@@ -50,7 +50,7 @@ There is an example on how to execute each of the features refered in the beggin
 
 # Actions
 
-## Actions - Configure the Actions that an Actuator can perform
+## Configure the Actions that an Actuator can perform
 
 #### Method - POST
 
@@ -74,7 +74,7 @@ curl -X POST 'http://localhost:8080/configureactions?actuatorIdString=232' -H 'C
 
 # Add to the Database
 
-## Add to the Database - Add a new Actuator to the Database
+## Add a new Actuator to the Database
 
 #### Method - POST
 
@@ -103,7 +103,7 @@ curl -X POST http://localhost:8080/addactuator -H 'content-type: multipart/form-
 |--|--|--|
 |actuatorId|int|Actuator ID of the brand new created actuator.|
 
-## Add to the Database - Add a new Description to the Database
+## Add a new Description to the Database
 
 #### Method - POST
 
@@ -131,7 +131,7 @@ curl -X POST http://localhost:8080/adddescription -H 'Content-Type: application/
 |--|--|--|
 |DescriptionId|int|Description ID of the brand new created description|
 
-## Add to the Database - Add a new Probe to the Database
+## Add a new Probe to the Database
 
 #### Method - POST
 
@@ -159,7 +159,7 @@ curl -X POST http://localhost:8080/addprobe -H 'Content-Type: application/json' 
 |--|--|--|
 |ProbeId|int|Probe ID of the brand new created probe|
 
-## Add to the Database - Add a new Resource to the Database
+## Add a new Resource to the Database
 
 #### Method - POST
 
@@ -190,7 +190,7 @@ curl -X POST http://localhost:8080/addresource -H 'Content-Type: application/jso
 
 # Keys
 
-## Keys - Generate a new Public - Private key pair
+## Generate a new Public - Private key pair
 
 #### Method - POST
 
