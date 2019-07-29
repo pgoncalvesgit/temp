@@ -16,7 +16,7 @@ This project allows you to:
  -   [Execution](#Execution)
  -   [HTTP Methods](#HTTP-Methods)
       *   [Actions](#Actions)
-         --   [Configure the Actions that an Actuator can perform](#Configure-the-Actions-that-an-Actuator-can-perform)
+         --  [Configure the Actions that an Actuator can perform](#Configure-the-Actions-that-an-Actuator-can-perform)
       *   [Add to the Database](#Add-to-the-Database)
         --   [Add a new Actuator to the Database](#Add-a-new-Actuator-to-the-Database)
         --   [Add a new Description to the Database](#Add-a-new-Description-to-the-Database)
