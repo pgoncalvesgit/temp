@@ -92,6 +92,7 @@ If the error is 404, it means the URI is not associated with any API Call.
 If the error is 405, it means the HTTP Method is not allowed to the URI that the call was made.
 
 Every API Call will return a Json with this base configuration:
+
 |Key|Type|Value description|
 |--|--|--|
 |specificMessage|String|Specific message about the response|
