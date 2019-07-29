@@ -14,15 +14,17 @@ This project allows you to:
 
  -   [Installation](#Installation)
  -   [Execution](#Execution)
- -   [Actions](#Actions)
-     -   [Configure the Actions that an Actuator can perform](#Configure-the-Actions-that-an-Actuator-can-perform)
- -   [Add to the Database](#Add-to-the-Database)
-     -   [Add a new Actuator to the Database](#Add-a-new-Actuator-to-the-Database)
-     -   [Add a new Description to the Database](#Add-a-new-Description-to-the-Database)
-     -   [Add a new Probe to the Database](#Add-a-new-Probe-to-the-Database)
-     -   [Add a new Resource to the Database](#Add-a-new-Resource-to-the-Database)
- -   [Keys](#Keys)
-     -   [Generate a new Public - Private key pair](#Generate-a-new-Public---Private-key-pair)
+ -   [HTTP Methods](#HTTP-Methods)
+      *   [Actions](#Actions)
+         --   [Configure the Actions that an Actuator can perform](#Configure-the-Actions-that-an-Actuator-can-perform)
+      *   [Add to the Database](#Add-to-the-Database)
+        --   [Add a new Actuator to the Database](#Add-a-new-Actuator-to-the-Database)
+        --   [Add a new Description to the Database](#Add-a-new-Description-to-the-Database)
+        --   [Add a new Probe to the Database](#Add-a-new-Probe-to-the-Database)
+        --   [Add a new Resource to the Database](#Add-a-new-Resource-to-the-Database)
+      *   [Keys](#Keys)
+        --   [Generate a new Public - Private key pair](#Generate-a-new-Public---Private-key-pair)
+ -   [Implementation Details](#Implementation-Details)
 
 
 # Installation
@@ -39,18 +41,16 @@ To deploy the pod in the cluster, you should run the following command on the ma
 kubectl create -f tma-admin-rest.yaml
 ```
 
-Keep in mind that you need **curl** installed  on your machine to be able to use the API. However, you can easily install it by typping:
-```
-sudo apt install curl
-```
-
 # Execution
 
 There is an example on how to execute each of the features refered in the beggining in the corresponding section bellow.
 
-# Actions
+# HTTP Methods
 
-## Configure the Actions that an Actuator can perform
+## Actions
+
+### Configure the Actions that an Actuator can perform
+- - -
 
 #### Method - POST
 
@@ -59,23 +59,48 @@ URI:
 http://localhost:8080/configureactions
 ```
 
+Model:
+Parameter - actuatorId.
+Body - json;
+```
+curl -X POST 'http://localhost:8080/configureactions?actuatorIdString=actuatorId' -H 'Content-Type: application/json' -d 'json'
+```
+
 Example:
 
 ```
 curl -X POST 'http://localhost:8080/configureactions?actuatorIdString=232' -H 'Content-Type: application/json' -d '{"actions": [{"action": 2,"resourceId" : 2,"configuration": []}]}'
 ```
 
-### Parameter
+### Input
 
-|Field|Type|Description|
+The actuatorId needs to be a String with the ID of the actuator which we want to configure (example: 232).
+
+The following table shows some information about the json configuration.
+
+|Key|Type|Description|Example|
+|--|--|--|--|
+|actions|Array with Jsons|Array with all the actions|TODO|
+|action|String|TODO|TODO|
+|resourceId|String|String with the ID of the resource|TODO|
+|configuration|Array|TODO|TODO|
+|key|String|TODO|TODO|
+|value|String|TODO|TODO|{"actions": [{"action": 2,"resourceId" : 2,"configuration": []}]}|
+
+### Success 201 & Error 400, 500
+
+The 3 possible status are 201, 400 and 500. The json that is returned will always have the same keys. In the table bellow there is some information about each key.
+
+|Key|Type|Value description|
 |--|--|--|
-|ActuatorId|String|in a String|
-|Json|Json|with the actions configuration|
+|specificMessage|String|Specific message about the response|
+|message|String|Generic message about the response|
+|status|String|Status of the HTTP Request|
+- - -
+## Add to the Database
 
-# Add to the Database
-
-## Add a new Actuator to the Database
-
+### Add a new Actuator to the Database
+- - -
 #### Method - POST
 
 URI:
@@ -84,27 +109,40 @@ URI:
 http://localhost:8080/addactuator
 ```
 
+Model:
+Body: file and actuatorAddress
+```
+curl -X POST http://localhost:8080/addactuator -H 'content-type: multipart/form-data;' -F file=@file -F address=actuatorAddress
+```
+
 Example:
 
 ```
-curl -X POST http://localhost:8080/addactuator -H 'content-type: multipart/form-data;' -F file=@/C:/Users/Alex/Downloads/test/public2 -F address=2
+curl -X POST http://localhost:8080/addactuator -H 'content-type: multipart/form-data;' -F file=@/home/user/publickey -F address=127.0.0.1
 ```
 
-### Parameter
+### Input
+The following table shows some information about the input.
+|Input|Type|Description|Example|
+|--|--|--|--|
+|actuatorAddress|String|Address of the Actuator which we want to add|127.0.0.1|
+|file|File|File with the public key|/home/user/publickey
 
-|Field|Type|Description|
+### Success 201 & Error 400, 415, 500
+
+The 4 possible status are 201, 400, 415 and 500. The key actuatorId will only exist if the status returned is 201. In the table bellow there is some information about each key.
+
+|Key|Type|Value description|
 |--|--|--|
-|address|String|of the actuator|
-|file|File|with the public key|
+|specificMessage|String|Specific message about the response|
+|message|String|Generic message about the response|
+|status|String|Status of the HTTP Request|
+||||
+|actuatorId|int|Actuator ID of the brand new created actuator. (Only exists if the status returned is 201)|
 
-### Success 200
-
-|Field|Type|Description|
-|--|--|--|
-|actuatorId|int|Actuator ID of the brand new created actuator.|
-
-## Add a new Description to the Database
-
+- - -
+### Add a new Description to the Database
+- - -
 #### Method - POST
 
 URI:
@@ -113,23 +151,39 @@ URI:
 http://localhost:8080/adddescription
 ```
 
+Model:
+Body: json
+```
+curl -X POST http://localhost:8080/adddescription -H 'Content-Type: application/json' -d 'json'
+```
+
 Example:
 
 ```
 curl -X POST http://localhost:8080/adddescription -H 'Content-Type: application/json' -d '{"dataType": "2","descriptionName": "2","unit" : "3"}'
 ```
 
-### Parameter
+### Input
+
+The following table shows some information about the json configuration.
+
+|Key|Type|Description|Example|
+|--|--|--|--|
+|dataType|String|TODO|TODO|
+|descriptionName|String|TODO|TODO|
+|unit|String|TODO|TODO|{"dataType": "2","descriptionName": "2","unit" : "3"}|
+
+### Success 201 & Error 400, 500
+
+The 3 possible status are 201, 400, and 500. The key descriptionId will only exist if the status returned is 201. In the table bellow there is some information about each key.
 
 |Field|Type|Description|
 |--|--|--|
-|Json|Json|with the description configuration|
-
-### Success 200
-
-|Field|Type|Description|
-|--|--|--|
-|DescriptionId|int|Description ID of the brand new created description|
+|specificMessage|String|Specific message about the response|
+|message|String|Generic message about the response|
+|status|String|Status of the HTTP Request|
+||||
+|descriptionId|String|Description ID of the brand new created description. (Only exists if the status returned is 201)|
 
 ## Add a new Probe to the Database
 
@@ -141,23 +195,41 @@ URI:
 http://localhost:8080/addprobe
 ```
 
+Model:
+Body: json
+```
+curl -X POST http://localhost:8080/addprobe -H 'Content-Type: application/json' -d 'json'
+```
+
 Example:
 
 ```
 curl -X POST http://localhost:8080/addprobe -H 'Content-Type: application/json' -d '{"probeName": "2","password": "2","salt" : "3","token" : "3","tokenExpiration" : "3"}'
 ```
 
-### Parameter
+### Input
+
+The following table shows some information about the json configuration.
+
+|Key|Type|Description|Example|
+|--|--|--|--|
+|probeName|String|TODO|TODO|
+|password|String|TODO|TODO|
+|salt|String|TODO|TODO|
+|token|String|TODO|TODO|
+|tokenExpiration|String|TODO|TODO|{"probeName": "2","password": "2","salt" : "3","token" : "3","tokenExpiration" : "3"}|
+
+### Success 201 & Error 400, 500
+
+The 3 possible status are 201, 400, and 500. The key probeId will only exist if the status returned is 201. In the table bellow there is some information about each key.
 
 |Field|Type|Description|
 |--|--|--|
-|Json|Json|with the Probe configuration|
-
-### Success 200
-
-|Field|Type|Description|
-|--|--|--|
-|ProbeId|int|Probe ID of the brand new created probe|
+|specificMessage|String|Specific message about the response|
+|message|String|Generic message about the response|
+|status|String|Status of the HTTP Request|
+||||
+|probeId|String|Probe ID of the brand new created probe. (Only exists if the status returned is 201)|
 
 ## Add a new Resource to the Database
 
@@ -169,24 +241,39 @@ URI:
 http://localhost:8080/addresource
 ```
 
+Model:
+Body: json
+```
+curl -X POST http://localhost:8080/addresource -H 'Content-Type: application/json' -d 'json'
+```
+
 Example:
 
 ```
 curl -X POST http://localhost:8080/addresource -H 'Content-Type: application/json' -d '{"name": "teste","type": "aqui","address": "221.31"}'
 ```
 
-### Parameter
+### Input
 
+The following table shows some information about the json configuration.
+
+|Key|Type|Description|Example|
+|--|--|--|--|
+|name|String|TODO|TODO|
+|type|String|TODO|TODO|
+|address|String|TODO|TODO|{"name": "teste","type": "aqui","address": "221.31"}|
+
+### Success 201 & Error 400, 500
+
+The 3 possible status are 201, 400, and 500. The key resourceId will only exist if the status returned is 201. In the table bellow there is some information about each key.
 
 |Field|Type|Description|
 |--|--|--|
-|ProbeId|int|with the Resource configuration|
-
-### Success 200
-
-|Field|Type|Description|
-|--|--|--|
-|ResourceId|int|Resource ID of the brand new created Resource|
+|specificMessage|String|Specific message about the response|
+|message|String|Generic message about the response|
+|status|String|Status of the HTTP Request|
+||||
+|resourceId|String|Resource ID of the brand new created Resource. (Only exists if the status returned is 201)|
 
 # Keys
 
@@ -200,6 +287,11 @@ URI:
 http://localhost:8080/generatekeys
 ```
 
+Model:
+```
+something
+```
+
 Example:
 
 ```
@@ -210,13 +302,22 @@ something
 
 |Field|Type|Description|
 |--|--|--|
-|Id|Number|Users unique ID|
+|?|?|?|
 
 
-### Success 200
+### Success 201 & Error 400, 500
 
 
 |Field|Type|Description|
 |--|--|--|
+|specificMessage|String|Specific message about the response|
+|message|String|Generic message about the response|
+|status|String|Status of the HTTP Request|
+||||
 |PublicKey|String|Public Key of the User|
 |PrivateKey|String|Private Key of the User|
+
+
+## Implementation Details
+
+To implement this API it was used [SpringBoot](https://spring.io/projects/spring-boot)  with [log4j](https://logging.apache.org/log4j/2.x/) to help with the logging.
