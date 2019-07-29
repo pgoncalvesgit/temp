@@ -84,7 +84,7 @@ A short explanation of the input, normally with a table like this:
 
 The numbers will be the possible status code the can be returned.
 
-201 is the only status code associated with a sucessfull call.
+In this API, 201 is the only status code associated with a sucessfull call.
 
 When the call is unsucessfull however, the status code can either be 400, in case something is wrong with the input syntax, 415, in case something is wrong with the input type and 500 in case something is wrong with the server (Database error).
 
@@ -332,7 +332,7 @@ The 3 possible status are 201, 400, and 500. The key resourceId will only exist 
 
 ## Generate a new Public - Private key pair
 
-#### Method - POST
+#### Method - GET
 
 URI:
 
@@ -342,34 +342,27 @@ http://localhost:8080/generatekeys
 
 Model:
 ```
-something
+curl -X GET http://localhost:8080/generatekeys --output file
 ```
 
 Example:
 
 ```
-something
+curl -X GET http://localhost:8080/generatekeys --output home/user/file.zip
 ```
 
-### Parameter
+### Input
 
-|Field|Type|Description|
-|--|--|--|
-|?|?|?|
+The file will be the directory where you want your file to be saved. For example home/user/file.zip
 
 
-### Success 201 & Error 400, 500
+### Success 201
 
+If the call is sucessfull the status code will be 201 which means the keys were created. You will have a zip file in the directory you specified. If you unzip it, you will get 2 files, one called publicKey and another called privateKey, which hold the public key and the private key inside, respectively.
 
-|Field|Type|Description|
-|--|--|--|
-|specificMessage|String|Specific message about the response|
-|message|String|Generic message about the response|
-|status|String|Status of the HTTP Request|
-||||
-|PublicKey|String|Public Key of the User|
-|PrivateKey|String|Private Key of the User|
+### Error 500
 
+If the call is unsucessfull the status code will be 500, it is due to an error while creating the keys or while creating the zip file.
 
 ## Implementation Details
 
