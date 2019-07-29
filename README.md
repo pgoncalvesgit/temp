@@ -14,7 +14,8 @@ This project allows you to:
 
  -   [Installation](#Installation)
  -   [Execution](#Execution)
- -   [HTTP Methods](#HTTP-Methods)
+ -   [API Calls](#API-Calls)
+	  -  [Introduction](#Introduction)
       -  [Actions](#Actions)
 	       -   [Configure the Actions that an Actuator can perform](#Configure-the-Actions-that-an-Actuator-can-perform)
       *   [Add to the Database](#Add-to-the-Database)
@@ -45,7 +46,58 @@ kubectl create -f tma-admin-rest.yaml
 
 There is an example on how to execute each of the features refered in the beggining in the corresponding section bellow.
 
-# HTTP Methods
+# API Calls
+
+## Introduction
+	
+Every call has the same base documentation. Model:
+
+#### Method - HTTP Method
+URI:
+```
+URI here
+```
+
+Model:
+Parameters - every necessary parameter name will be here
+Body - every variable that goes inside the body will be here
+```
+curl command with variable names
+```
+
+Example:
+
+```
+curl command with examples instead of variable names
+```
+
+### Input
+
+A short explanation of the input, normally with a table like this:
+
+|Key|Type|Description|Example|
+|--|--|--|--|
+| | | |
+| | | |
+
+### Success numbers & Error numbers
+
+The numbers will be the possible status code the can be returned.
+
+201 is the only status code associated with a sucessfull call.
+
+When the call is unsucessfull however, the status code can either be 400, in case something is wrong with the input syntax, 415, in case something is wrong with the input type and 500 in case something is wrong with the server (Database error).
+
+If the error is 404, it means the URI is not associated with any API Call.
+If the error is 405, it means the HTTP Method is not allowed to the URI that the call was made.
+
+Every API Call will return a Json with this base configuration:
+|Key|Type|Value description|
+|--|--|--|
+|specificMessage|String|Specific message about the response|
+|message|String|Generic message about the response|
+|status|String|Status of the HTTP Request|
+- - -
 
 ## Actions
 
@@ -321,3 +373,5 @@ something
 ## Implementation Details
 
 To implement this API it was used [SpringBoot](https://spring.io/projects/spring-boot)  with [log4j](https://logging.apache.org/log4j/2.x/) to help with the logging.
+- - -
+- - -
