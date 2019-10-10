@@ -1,3 +1,48 @@
+## UC Meeting (Nuno, Zé, Rui, Paulo):
+
+  - #### Components Validation - In Progress
+    * Message sent to Ignacio today 
+ - #### Updated version of Deliverable 3.5 - In Progress
+   * Analyze, Dashboard?
+   * Rui is in charge of it
+ - #### Final deployment of TMA (decide the environment, ...) - To Do (Discussion with Amanda pending)
+ - #### Integration with Dell (Probe and Quality Models) - In Progress
+   * Probes pending (waiting for Dell)
+   * Quality Model - To be tested
+     - Quick fixes pending
+   * [Actuator ](https://github.com/eubr-atmosphere/tma-framework-e/tree/new/cloudea-actuator/development/actuators/cloudea-actuator) - In Progress
+ - #### Support to Lemonade probes (Walter/UFMG) - In Progress
+   * Not sure if we will need to implement something
+ - #### Final Demo - To Do (Decide what quality models to be used)
+   * Use the resource or performance quality models
+   * Atuação: scale and send mail
+ - #### [Java Probe JMX](https://github.com/eubr-atmosphere/tma-framework-m/pull/67) - Discussion between Rui and Nuno pending
+   * The current solution is overkill. It should be a boolean instead of the current implementation.
+   * Remove JUnique and use a boolean that is checked in an if statement.
+ - #### TMA release (including API) - To Do
+   * To be done during the meeting next week
+   * (API needs to be pushed to GitHub)
+   * Change the "Description" in the dashboard header to "Measurement/event"
+   * Salt must be generated using Argon
+   * Find bootstrap for the dashboard
+ - #### Script to add the probes, descriptions (maybe through Admin GUI) - as it was discussed during 28th RTB - To Do
+   * Add an higher level file
+   * Can use the API
+ - #### Integration with Unicamp Dashboard - In Progress
+   * Waiting for their feedback
+   * Last messages on Thursday
+ - #### Paper - Framework, Artifact - Decide what to do
+   * Stand by for now
+ - #### Allow planning to handle plans with more than one action - To Do
+ - #### Threat Model - To Do
+   * Authentication, Fogbow - ...
+
+---
+###### José Alexandre D'Abruzzo Pereira
+###### PhD Student
+---
+
+
 # TMA Admin Rest API
 
 This project allows you to:
