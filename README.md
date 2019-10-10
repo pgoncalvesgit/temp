@@ -35,12 +35,7 @@
    * Stand by for now
  - #### Allow planning to handle plans with more than one action - To Do
  - #### Threat Model - To Do
-   * Authentication, Fogbow - ...
-
----
-###### José Alexandre D'Abruzzo Pereira
-###### PhD Student
----
+   * Authentication, Fogbow
 
 
 # TMA Admin Rest API
